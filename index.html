@@ -1,0 +1,1418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Spatial Database of Surface Runoff in Nan Watershed</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="startbootstrap/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="startbootstrap/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="startbootstrap/dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+    <div id="wrapper">
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Spatial Database of Surface Runoff in Nan Watershed</a>
+            </div>
+            <!-- /.navbar-header -->
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li><a href="index.html"><i class="fa fa-dashboard fa-fw"></i> หน้าหลัก</a></li>
+		    								<li><a href="./startbootstrap/pages/about.html"><i class="fa fa-newspaper-o"></i> เกี่ยวกับโครงการ</a></li>
+												<li><a href="./startbootstrap/pages/method.html"><i class="fa fa-sitemap fa-fw"></i> การคำนวณน้ำท่าผิว</a></li>
+		        						<li><a href="./map"><i class="fa fa-globe"></i> Surface Runoff Map</a></li>
+                        <li><a href="./startbootstrap/pages/weathermap.html"><i class="fa fa-sitemap fa-fw"></i> Weather Map</a></li>
+                        <!-- li><a href="login.html"><i class="fa fa-user"></i> Login</a></li -->
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="page-header">สถานการณ์ปริมาณน้ำฝนและน้ำท่าผิวดินในลุ่มน้ำน่าน</h2>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+
+            </div>
+            <!-- /.row -->
+
+            <div class="row">
+                <div class="panel-body">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> แม่น้ำน่านตอนบน
+
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+													<div id="nan-north"></div>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> น้ำยาว (1)
+
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+														<div id="namyaw-1"></div>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+
+<!-- chai add graph -->
+									<div class="panel panel-default">
+											<div class="panel-heading">
+													<i class="fa fa-bar-chart-o fa-fw"></i> แม่น้ำน่านส่วนที่ 2
+
+											</div>
+											<!-- /.panel-heading -->
+											<div class="panel-body">
+													<div id="nan-north2"></div>
+											</div>
+											<!-- /.panel-body -->
+									</div>
+
+									<div class="panel panel-default">
+											<div class="panel-heading">
+													<i class="fa fa-bar-chart-o fa-fw"></i> น้ำยาว (2)
+
+											</div>
+											<!-- /.panel-heading -->
+											<div class="panel-body">
+													<div id="namyaw-2"></div>
+											</div>
+											<!-- /.panel-body -->
+									</div>
+
+									<div class="panel panel-default">
+											<div class="panel-heading">
+													<i class="fa fa-bar-chart-o fa-fw"></i> น้ำสมุน
+
+											</div>
+											<!-- /.panel-heading -->
+											<div class="panel-body">
+													<div id="namsamun"></div>
+											</div>
+											<!-- /.panel-body -->
+									</div>
+
+
+									<div class="panel panel-default">
+											<div class="panel-heading">
+													<i class="fa fa-bar-chart-o fa-fw"></i> แม่น้ำน่านส่วนที่ 3
+
+											</div>
+											<!-- /.panel-heading -->
+											<div class="panel-body">
+													<div id="nan-north3"></div>
+											</div>
+											<!-- /.panel-body -->
+									</div>
+
+									<div class="panel panel-default">
+											<div class="panel-heading">
+													<i class="fa fa-bar-chart-o fa-fw"></i> น้ำสา
+
+											</div>
+											<!-- /.panel-heading -->
+											<div class="panel-body">
+													<div id="namsa"></div>
+											</div>
+											<!-- /.panel-body -->
+									</div>
+
+									<div class="panel panel-default">
+											<div class="panel-heading">
+													<i class="fa fa-bar-chart-o fa-fw"></i> น้ำว้า
+
+											</div>
+											<!-- /.panel-heading -->
+											<div class="panel-body">
+													<div id="namwa"></div>
+											</div>
+											<!-- /.panel-body -->
+									</div>
+
+
+									<div class="panel panel-default">
+											<div class="panel-heading">
+													<i class="fa fa-bar-chart-o fa-fw"></i> น้ำแหง
+
+											</div>
+											<!-- /.panel-heading -->
+											<div class="panel-body">
+													<div id="namhaeng"></div>
+											</div>
+											<!-- /.panel-body -->
+									</div>
+
+									<div class="panel panel-default">
+											<div class="panel-heading">
+													<i class="fa fa-bar-chart-o fa-fw"></i> แม่น้ำน่านส่วนที่ 4
+
+											</div>
+											<!-- /.panel-heading -->
+											<div class="panel-body">
+													<div id="nan-north4"></div>
+											</div>
+											<!-- /.panel-body -->
+									</div>
+
+									<div class="panel panel-default">
+											<div class="panel-heading">
+													<i class="fa fa-bar-chart-o fa-fw"></i> น้ำปาด
+
+											</div>
+											<!-- /.panel-heading -->
+											<div class="panel-body">
+													<div id="nampad"></div>
+											</div>
+											<!-- /.panel-body -->
+									</div>
+
+									<div class="panel panel-default">
+											<div class="panel-heading">
+													<i class="fa fa-bar-chart-o fa-fw"></i> คลองตรอน
+
+											</div>
+											<!-- /.panel-heading -->
+											<div class="panel-body">
+													<div id="klongtron"></div>
+											</div>
+											<!-- /.panel-body -->
+									</div>
+
+									<div class="panel panel-default">
+											<div class="panel-heading">
+													<i class="fa fa-bar-chart-o fa-fw"></i> แม่น้ำแควน้อย
+
+											</div>
+											<!-- /.panel-heading -->
+											<div class="panel-body">
+													<div id="khaewnoi"></div>
+											</div>
+											<!-- /.panel-body -->
+									</div>
+
+									<div class="panel panel-default">
+											<div class="panel-heading">
+													<i class="fa fa-bar-chart-o fa-fw"></i> น้ำภาค
+
+											</div>
+											<!-- /.panel-heading -->
+											<div class="panel-body">
+													<div id="nampak"></div>
+											</div>
+											<!-- /.panel-body -->
+									</div>
+
+									<div class="panel panel-default">
+											<div class="panel-heading">
+													<i class="fa fa-bar-chart-o fa-fw"></i> แม่น้ำวังทอง
+
+											</div>
+											<!-- /.panel-heading -->
+											<div class="panel-body">
+													<div id="wangthong"></div>
+											</div>
+											<!-- /.panel-body -->
+									</div>
+
+									<div class="panel panel-default">
+											<div class="panel-heading">
+													<i class="fa fa-bar-chart-o fa-fw"></i> แม่น้ำน่านตอนล่าง
+
+											</div>
+											<!-- /.panel-heading -->
+											<div class="panel-body">
+													<div id="nan-low"></div>
+											</div>
+											<!-- /.panel-body -->
+									</div>
+
+
+                </div>
+                <!-- /.col-lg-8 -->
+
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+		<!-- Highcharts -->
+<script type="text/javascript">
+// nan-north
+$(function () {
+    $('#nan-north').highcharts({
+			chart: {
+					zoomType: 'x'
+				},
+        title: {
+            text: 'ปริมาณน้ำฝนและน้ำท่าผิวดินรายสัปดาห์ของลุ่มน้ำสาขาแม่น้ำน่านตอนบน',
+            x: -20 //center
+        },
+
+        xAxis: {
+            categories: ['Week 1','Week 2','Week 3','Week 4','Week 5','Week 6','Week 7','Week 8','Week 9','Week 10','Week 11','Week 12','Week 13','Week 14','Week 15',
+						'Week 16','Week 17','Week 18','Week 19','Week 20','Week 21','Week 22','Week 23','Week 24','Week 25','Week 26','Week 27','Week 28','Week 29','Week 30',
+						'Week 31','Week 32','Week 33','Week 34','Week 35','Week 36','Week 37','Week 38','Week 39','Week 40','Week 41','Week 42','Week 43','Week 44','Week 45',
+						'Week 46','Week 47','Week 48','Week 49','Week 50','Week 51','Week 52']
+        },
+        yAxis: {
+            title: {
+                text: 'ปริมาณน้ำฝนและน้ำท่าผิวดิน (m³)'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            valueSuffix: ' m³'
+        },
+				legend: {
+            layout: 'horizontal',
+            align: 'center',
+            verticalAlign: 'bottom',
+            borderWidth: 0
+        },
+				tooltip: {
+            crosshairs: true,
+            shared: true
+        },
+        plotOptions: {
+            spline: {
+                marker: {
+                    radius: 4,
+                    lineColor: '#666666',
+                    lineWidth: 1
+                }
+            }
+        },
+        series: [{
+            name: 'ปริมาณน้ำฝน',
+            data: [10,940,2652,9694,21737,7440,411,789,5126,15466,4802,12682,5137,4530,
+									79024,8894,68738,79956,82639,63758,26605,108897,97222,92972,34684,135866,
+									162537,193862,271370,290102,137493,277449,67068,227756,149380,145997,160088,
+									61862,96632,125365,12763,62708,65839,80570,32044,6152,1888,7421,15338,454,0,1441]
+        }, {
+            name: 'ปริมาณน้ำท่าผิวดิน',
+            data: [0,15,190,3514,3990,2332,400,219,2272,3551,1222,4860,3678,3874,14073,6664,8745,12409,14289,8400,5733,30208,20883,16626,6774,41768,64214,81477,140493,161393,40586,150413,21182,109847,51557,44485,56585,10400,21843,35827,7060,12090,12727,16939,2871,1920,1721,2237,1235,368,0,111]
+        }, {
+            name: 'การใช้น้ำของข้าว',
+            data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,0,0,0
+]
+        }, {
+            name: 'การใช้น้ำของพืชไร่',
+            data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,0,0,0,0,0,0,0,0,0,0,0,0
+]
+        }]
+    });
+});
+
+// namyaw-1
+$(function () {
+    $('#namyaw-1').highcharts({
+			chart: {
+					zoomType: 'x'
+				},
+        title: {
+            text: 'ปริมาณน้ำฝนและน้ำท่าผิวดินรายสัปดาห์ของลุ่มน้ำสาขาน้ำยาว (1)',
+            x: -20 //center
+        },
+
+        xAxis: {
+            categories: ['Week 1','Week 2','Week 3','Week 4','Week 5','Week 6','Week 7','Week 8','Week 9','Week 10','Week 11','Week 12','Week 13','Week 14','Week 15',
+						'Week 16','Week 17','Week 18','Week 19','Week 20','Week 21','Week 22','Week 23','Week 24','Week 25','Week 26','Week 27','Week 28','Week 29','Week 30',
+						'Week 31','Week 32','Week 33','Week 34','Week 35','Week 36','Week 37','Week 38','Week 39','Week 40','Week 41','Week 42','Week 43','Week 44','Week 45',
+						'Week 46','Week 47','Week 48','Week 49','Week 50','Week 51','Week 52']
+        },
+        yAxis: {
+            title: {
+                text: 'ปริมาณน้ำฝนและน้ำท่าผิวดิน (m³)'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            valueSuffix: ' m³'
+        },
+        legend: {
+            layout: 'horizontal',
+            align: 'center',
+            verticalAlign: 'bottom',
+            borderWidth: 0
+        },
+				tooltip: {
+            crosshairs: true,
+            shared: true
+        },
+        plotOptions: {
+            spline: {
+                marker: {
+                    radius: 4,
+                    lineColor: '#666666',
+                    lineWidth: 1
+                }
+            }
+        },
+        series: [{
+            name: 'ปริมาณน้ำฝน',
+            data: [38,978,12426,1795,19752,4974,1977,3586,2289,16726,21624,14154,28197,16703,48378,48243,82220,78214,95100,102725,114776,110023,112104,103628,113201,122857,141243,116317,201946,174592,194665,140996,226225,90240,119928,121597,133402,69698,48902,46360,43050,29832,46077,18198,17804,8359,13746,3976,943,59,0,920
+]
+        }, {
+            name: 'ปริมาณน้ำท่าผิวดิน',
+            data: [0,392,3812,991,2061,2553,888,1065,1240,2504,3004,3645,1250,2799,2190,2414,12941,10174,18900,21446,27375,27467,26269,21318,26795,31964,45263,31064,84991,70606,79965,44618,102641,19021,31079,30424,39948,8360,3261,2742,2515,3293,5013,3769,2951,5086,3489,919,425,10,1,734
+]
+        }, {
+            name: 'การใช้น้ำของข้าว',
+            data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,0,0,0
+]
+        }, {
+            name: 'การใช้น้ำของพืชไร่',
+            data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,0,0,0,0,0,0,0,0,0,0,0,0
+]
+        }]
+    });
+});
+
+//nan-north2
+$(function () {
+    $('#nan-north2').highcharts({
+			chart: {
+					zoomType: 'x'
+				},
+        title: {
+            text: 'ปริมาณน้ำฝนและน้ำท่าผิวดินรายสัปดาห์ของลุ่มน้ำสาขาแม่น้ำน่านส่วนที่ 2',
+            x: -20 //center
+        },
+
+        xAxis: {
+            categories: ['Week 1','Week 2','Week 3','Week 4','Week 5','Week 6','Week 7','Week 8','Week 9','Week 10','Week 11','Week 12','Week 13','Week 14','Week 15',
+						'Week 16','Week 17','Week 18','Week 19','Week 20','Week 21','Week 22','Week 23','Week 24','Week 25','Week 26','Week 27','Week 28','Week 29','Week 30',
+						'Week 31','Week 32','Week 33','Week 34','Week 35','Week 36','Week 37','Week 38','Week 39','Week 40','Week 41','Week 42','Week 43','Week 44','Week 45',
+						'Week 46','Week 47','Week 48','Week 49','Week 50','Week 51','Week 52']
+        },
+        yAxis: {
+            title: {
+                text: 'ปริมาณน้ำฝนและน้ำท่าผิวดิน (m³)'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            valueSuffix: ' m³'
+        },
+        legend: {
+            layout: 'horizontal',
+            align: 'center',
+            verticalAlign: 'bottom',
+            borderWidth: 0
+        },
+				tooltip: {
+            crosshairs: true,
+            shared: true
+        },
+        plotOptions: {
+            spline: {
+                marker: {
+                    radius: 4,
+                    lineColor: '#666666',
+                    lineWidth: 1
+                }
+            }
+        },
+        series: [{
+            name: 'ปริมาณน้ำฝน',
+            data: [126,5619,769,39,14718,108,324,1945,19425,4728,16520,1775,6086,4548,60076,27781,41664,84859,34116,37958,68068,59791,99923,88466,111340,114895,94603,25931,134426,61054,59102,130412,73737,25803,96966,95636,29590,18208,19426,21363,18147,4371,6245,5977,1443,8169,1802,459,165,10,0,1210
+]
+        }, {
+            name: 'ปริมาณน้ำท่าผิวดิน',
+            data: [7,916,200,3,4233,56,72,91,4136,1464,5194,1775,2241,2739,8311,2498,2712,15500,2620,6370,8577,6671,21716,16936,27294,30206,19530,3395,40046,8702,10530,40397,22050,7788,20417,19099,7711,8486,3700,5087,5134,3880,3338,3188,915,3897,715,65,26,1,0,2
+]
+        }, {
+            name: 'การใช้น้ำของข้าว',
+            data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,0,0,0
+]
+        }, {
+            name: 'การใช้น้ำของพืชไร่',
+            data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,0,0,0,0,0,0,0,0,0,0,0,0
+]
+        }]
+    });
+});
+
+//manyaw-2
+$(function () {
+    $('#namyaw-2').highcharts({
+			chart: {
+					zoomType: 'x'
+				},
+        title: {
+            text: 'ปริมาณน้ำฝนและน้ำท่าผิวดินรายสัปดาห์ของลุ่มน้ำสาขาน้ำยาว (2)',
+            x: -20 //center
+        },
+
+        xAxis: {
+            categories: ['Week 1','Week 2','Week 3','Week 4','Week 5','Week 6','Week 7','Week 8','Week 9','Week 10','Week 11','Week 12','Week 13','Week 14','Week 15',
+						'Week 16','Week 17','Week 18','Week 19','Week 20','Week 21','Week 22','Week 23','Week 24','Week 25','Week 26','Week 27','Week 28','Week 29','Week 30',
+						'Week 31','Week 32','Week 33','Week 34','Week 35','Week 36','Week 37','Week 38','Week 39','Week 40','Week 41','Week 42','Week 43','Week 44','Week 45',
+						'Week 46','Week 47','Week 48','Week 49','Week 50','Week 51','Week 52']
+        },
+        yAxis: {
+            title: {
+                text: 'ปริมาณน้ำฝนและน้ำท่าผิวดิน (m³)'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            valueSuffix: ' m³'
+        },
+        legend: {
+            layout: 'horizontal',
+            align: 'center',
+            verticalAlign: 'bottom',
+            borderWidth: 0
+        },
+				tooltip: {
+            crosshairs: true,
+            shared: true
+        },
+        plotOptions: {
+            spline: {
+                marker: {
+                    radius: 4,
+                    lineColor: '#666666',
+                    lineWidth: 1
+                }
+            }
+        },
+        series: [{
+            name: 'ปริมาณน้ำฝน',
+            data: [110,3845,2107,171,13919,1277,1645,1104,8409,9612,19518,10271,17500,12747,45377,29652,51061,78389,53776,68854,62576,78366,116589,80867,110615,109734,148611,58107,194781,111414,127643,141698,147907,99723,123811,118745,93179,68756,40263,53715,48301,24155,28525,12610,8469,10679,5571,96,1623,76,0,1135
+]
+        }, {
+            name: 'ปริมาณน้ำท่าผิวดิน',
+            data: [68,937,770,72,3269,202,48,259,3481,4672,3058,4769,2910,3950,2188,1282,3149,11031,4555,9924,5935,11819,29003,12060,26049,25246,49337,7992,80714,30796,37744,44125,49355,28749,33766,30344,24200,14943,3093,6838,3464,3437,3531,4631,5678,4204,3228,16,33,6,1,97
+]
+        }, {
+            name: 'การใช้น้ำของข้าว',
+            data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,0,0,0
+]
+        }, {
+            name: 'การใช้น้ำของพืชไร่',
+            data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,0,0,0,0,0,0,0,0,0,0,0,0
+]
+        }]
+    });
+});
+
+// namsamun
+$(function () {
+    $('#namsamun').highcharts({
+			chart: {
+					zoomType: 'x'
+				},
+        title: {
+            text: 'ปริมาณน้ำฝนและน้ำท่าผิวดินรายสัปดาห์ของลุ่มน้ำสาขาน้ำสมุน',
+            x: -20 //center
+        },
+
+        xAxis: {
+            categories: ['Week 1','Week 2','Week 3','Week 4','Week 5','Week 6','Week 7','Week 8','Week 9','Week 10','Week 11','Week 12','Week 13','Week 14','Week 15',
+						'Week 16','Week 17','Week 18','Week 19','Week 20','Week 21','Week 22','Week 23','Week 24','Week 25','Week 26','Week 27','Week 28','Week 29','Week 30',
+						'Week 31','Week 32','Week 33','Week 34','Week 35','Week 36','Week 37','Week 38','Week 39','Week 40','Week 41','Week 42','Week 43','Week 44','Week 45',
+						'Week 46','Week 47','Week 48','Week 49','Week 50','Week 51','Week 52']
+        },
+        yAxis: {
+            title: {
+                text: 'ปริมาณน้ำฝนและน้ำท่าผิวดิน (m³)'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            valueSuffix: ' m³'
+        },
+        legend: {
+            layout: 'horizontal',
+            align: 'center',
+            verticalAlign: 'bottom',
+            borderWidth: 0
+        },
+				tooltip: {
+            crosshairs: true,
+            shared: true
+        },
+        plotOptions: {
+            spline: {
+                marker: {
+                    radius: 4,
+                    lineColor: '#666666',
+                    lineWidth: 1
+                }
+            }
+        },
+        series: [{
+            name: 'ปริมาณน้ำฝน',
+            data: [96,6331,101,0,19970,0,0,235,27948,1610,7634,52,402,708,82582,27227,43012,107397,31301,24402,67189,61799,95756,99188,111240,132560,85516,20392,121852,61671,32198,170207,23193,4834,104423,89739,9460,1183,20948,10052,10424,1388,3155,8189,515,7477,240,14,0,5,0,0
+]
+        }, {
+            name: 'ปริมาณน้ำท่าผิวดิน',
+            data: [4,131,93,7,2340,57,57,27,1908,8348,6084,9129,8960,8803,13143,1361,1828,23687,1413,5074,7057,5785,18431,19822,25674,38044,13911,2524,31472,6615,5559,62332,8042,7316,22154,15193,6937,1741,2421,5512,6043,953,2686,5750,294,2670,130,0,1,4,1,1
+]
+        }, {
+            name: 'การใช้น้ำของข้าว',
+            data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,0,0,0
+]
+        }, {
+            name: 'การใช้น้ำของพืชไร่',
+            data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,0,0,0,0,0,0,0,0,0,0,0,0
+]
+        }]
+    });
+});
+
+
+//nan-north3
+$(function () {
+    $('#nan-north3').highcharts({
+			chart: {
+					zoomType: 'x'
+				},
+        title: {
+            text: 'ปริมาณน้ำฝนและน้ำท่าผิวดินรายสัปดาห์ของลุ่มน้ำสาขาแม่น้ำน่านส่วนที่ 3',
+            x: -20 //center
+        },
+
+        xAxis: {
+            categories: ['Week 1','Week 2','Week 3','Week 4','Week 5','Week 6','Week 7','Week 8','Week 9','Week 10','Week 11','Week 12','Week 13','Week 14','Week 15',
+						'Week 16','Week 17','Week 18','Week 19','Week 20','Week 21','Week 22','Week 23','Week 24','Week 25','Week 26','Week 27','Week 28','Week 29','Week 30',
+						'Week 31','Week 32','Week 33','Week 34','Week 35','Week 36','Week 37','Week 38','Week 39','Week 40','Week 41','Week 42','Week 43','Week 44','Week 45',
+						'Week 46','Week 47','Week 48','Week 49','Week 50','Week 51','Week 52']
+        },
+        yAxis: {
+            title: {
+                text: 'ปริมาณน้ำฝนและน้ำท่าผิวดิน (m³)'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            valueSuffix: ' m³'
+        },
+        legend: {
+            layout: 'horizontal',
+            align: 'center',
+            verticalAlign: 'bottom',
+            borderWidth: 0
+        },
+				tooltip: {
+            crosshairs: true,
+            shared: true
+        },
+        plotOptions: {
+            spline: {
+                marker: {
+                    radius: 4,
+                    lineColor: '#666666',
+                    lineWidth: 1
+                }
+            }
+        },
+        series: [{
+            name: 'ปริมาณน้ำฝน',
+            data: [315,1607,3821,1564,6648,5863,17208,5675,4959,30430,8706,13688,22119,11856,33511,23823,38168,55076,53435,81320,103282,67790,70310,41181,73148,48647,52112,44318,49918,42796,76837,83349,79173,78970,61385,88718,106969,129938,61067,69076,28404,6384,16957,20630,18845,3504,8484,7298,1115,379,100,965
+]
+        }, {
+            name: 'ปริมาณน้ำท่าผิวดิน',
+            data: [59,58,92,333,400,1589,7164,2607,2570,4232,6490,5606,6342,6368,7761,6546,6301,11564,8227,25336,25255,14285,14305,8677,17684,11588,12182,4604,8769,6034,15639,29773,22827,21096,9487,19018,36020,56695,9962,10234,6463,6202,5031,4172,5480,2335,3137,3105,383,59,21,4
+]
+        }, {
+            name: 'การใช้น้ำของข้าว',
+            data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,0,0,0
+]
+        }, {
+            name: 'การใช้น้ำของพืชไร่',
+            data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,0,0,0,0,0,0,0,0,0,0,0,0
+]
+        }]
+    });
+});
+
+//namsa
+$(function () {
+    $('#namsa').highcharts({
+			chart: {
+					zoomType: 'x'
+				},
+        title: {
+            text: 'ปริมาณน้ำฝนและน้ำท่าผิวดินรายสัปดาห์ของลุ่มน้ำสาขาน้ำสา',
+            x: -20 //center
+        },
+
+        xAxis: {
+            categories: ['Week 1','Week 2','Week 3','Week 4','Week 5','Week 6','Week 7','Week 8','Week 9','Week 10','Week 11','Week 12','Week 13','Week 14','Week 15',
+						'Week 16','Week 17','Week 18','Week 19','Week 20','Week 21','Week 22','Week 23','Week 24','Week 25','Week 26','Week 27','Week 28','Week 29','Week 30',
+						'Week 31','Week 32','Week 33','Week 34','Week 35','Week 36','Week 37','Week 38','Week 39','Week 40','Week 41','Week 42','Week 43','Week 44','Week 45',
+						'Week 46','Week 47','Week 48','Week 49','Week 50','Week 51','Week 52']
+        },
+        yAxis: {
+            title: {
+                text: 'ปริมาณน้ำฝนและน้ำท่าผิวดิน (m³)'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            valueSuffix: ' m³'
+        },
+        legend: {
+            layout: 'horizontal',
+            align: 'center',
+            verticalAlign: 'bottom',
+            borderWidth: 0
+        },
+				tooltip: {
+            crosshairs: true,
+            shared: true
+        },
+        plotOptions: {
+            spline: {
+                marker: {
+                    radius: 4,
+                    lineColor: '#666666',
+                    lineWidth: 1
+                }
+            }
+        },
+        series: [{
+            name: 'ปริมาณน้ำฝน',
+            data: [362,2329,183,126,10878,1519,772,510,11404,15633,2311,1883,1990,2260,60180,20804,47592,89352,43467,82700,80600,65209,60294,53884,68140,77986,61914,43861,69648,71407,59209,134160,40731,51053,101530,76849,58608,42510,58221,74901,28667,13590,18896,19493,8822,2957,542,3746,894,182,0,2635
+]
+        }, {
+            name: 'ปริมาณน้ำท่าผิวดิน',
+            data: [22,109,42,71,2916,730,169,280,2145,3624,1418,558,619,434,5148,2295,1813,13766,1554,11634,9852,6392,6581,5132,8701,13485,6528,1293,11578,9368,4267,37784,4912,2921,18697,9071,5545,8847,3725,9144,2654,3884,2585,2414,5804,1050,252,886,34,21,0,685
+]
+        }, {
+            name: 'การใช้น้ำของข้าว',
+            data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,0,0,0
+]
+        }, {
+            name: 'การใช้น้ำของพืชไร่',
+            data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,0,0,0,0,0,0,0,0,0,0,0,0
+]
+        }]
+    });
+});
+
+//namwa
+$(function () {
+    $('#namwa').highcharts({
+			chart: {
+					zoomType: 'x'
+				},
+        title: {
+            text: 'ปริมาณน้ำฝนและน้ำท่าผิวดินรายสัปดาห์ของลุ่มน้ำสาขาน้ำว้า',
+            x: -20 //center
+        },
+
+        xAxis: {
+            categories: ['Week 1','Week 2','Week 3','Week 4','Week 5','Week 6','Week 7','Week 8','Week 9','Week 10','Week 11','Week 12','Week 13','Week 14','Week 15',
+						'Week 16','Week 17','Week 18','Week 19','Week 20','Week 21','Week 22','Week 23','Week 24','Week 25','Week 26','Week 27','Week 28','Week 29','Week 30',
+						'Week 31','Week 32','Week 33','Week 34','Week 35','Week 36','Week 37','Week 38','Week 39','Week 40','Week 41','Week 42','Week 43','Week 44','Week 45',
+						'Week 46','Week 47','Week 48','Week 49','Week 50','Week 51','Week 52']
+        },
+        yAxis: {
+            title: {
+                text: 'ปริมาณน้ำฝนและน้ำท่าผิวดิน (m³)'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            valueSuffix: ' m³'
+        },
+        legend: {
+            layout: 'horizontal',
+            align: 'center',
+            verticalAlign: 'bottom',
+            borderWidth: 0
+        },
+				tooltip: {
+            crosshairs: true,
+            shared: true
+        },
+        plotOptions: {
+            spline: {
+                marker: {
+                    radius: 4,
+                    lineColor: '#666666',
+                    lineWidth: 1
+                }
+            }
+        },
+        series: [{
+            name: 'ปริมาณน้ำฝน',
+            data: [4,110,4849,5457,11994,7508,23124,1854,696,15231,2226,28634,26207,12132,39802,8772,67817,55452,74124,100672,49470,107716,123033,71832,59298,93014,195427,134854,225047,210351,177217,181129,136004,220060,175243,120502,194879,174051,77431,123363,55744,61916,70492,47226,28354,9404,7863,3926,8440,306,0,2487
+]
+        }, {
+            name: 'ปริมาณน้ำท่าผิวดิน',
+            data: [0,6,39,676,5365,5992,2929,1473,995,3252,1398,1296,1861,4435,5925,5965,7890,9181,12584,19911,4160,28396,32126,9052,7302,25075,83875,41408,109759,101244,65164,85754,37515,99203,64169,30925,77431,61645,13595,31128,3340,9723,11578,5917,3038,5406,5694,2596,3897,160,1,823
+]
+        }, {
+            name: 'การใช้น้ำของข้าว',
+            data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,0,0,0
+]
+        }, {
+            name: 'การใช้น้ำของพืชไร่',
+            data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,0,0,0,0,0,0,0,0,0,0,0,0
+]
+        }]
+    });
+});
+
+// namhaeng
+$(function () {
+    $('#namhaeng').highcharts({
+			chart: {
+					zoomType: 'x'
+				},
+        title: {
+            text: 'ปริมาณน้ำฝนและน้ำท่าผิวดินรายสัปดาห์ของลุ่มน้ำสาขาน้ำแหง',
+            x: -20 //center
+        },
+
+        xAxis: {
+            categories: ['Week 1','Week 2','Week 3','Week 4','Week 5','Week 6','Week 7','Week 8','Week 9','Week 10','Week 11','Week 12','Week 13','Week 14','Week 15',
+						'Week 16','Week 17','Week 18','Week 19','Week 20','Week 21','Week 22','Week 23','Week 24','Week 25','Week 26','Week 27','Week 28','Week 29','Week 30',
+						'Week 31','Week 32','Week 33','Week 34','Week 35','Week 36','Week 37','Week 38','Week 39','Week 40','Week 41','Week 42','Week 43','Week 44','Week 45',
+						'Week 46','Week 47','Week 48','Week 49','Week 50','Week 51','Week 52']
+        },
+        yAxis: {
+            title: {
+                text: 'ปริมาณน้ำฝนและน้ำท่าผิวดิน (m³)'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            valueSuffix: ' m³'
+        },
+        legend: {
+            layout: 'horizontal',
+            align: 'center',
+            verticalAlign: 'bottom',
+            borderWidth: 0
+        },
+				tooltip: {
+            crosshairs: true,
+            shared: true
+        },
+        plotOptions: {
+            spline: {
+                marker: {
+                    radius: 4,
+                    lineColor: '#666666',
+                    lineWidth: 1
+                }
+            }
+        },
+        series: [{
+            name: 'ปริมาณน้ำฝน',
+            data: [854,3109,2055,572,8845,2562,8132,3092,7138,26226,6628,7740,16563,8881,48198,29580,54045,74194,39520,72667,94144,72892,79313,39490,75725,65002,66555,40795,56092,72784,48156,106808,70463,47541,74893,64479,62123,71607,67707,89465,21981,10683,13120,18692,9726,1850,3607,4340,765,228,1,2670
+]
+        }, {
+            name: 'ปริมาณน้ำท่าผิวดิน',
+            data: [157,181,635,329,282,1333,2335,2230,5686,1350,6017,5611,4806,5638,8599,1958,6127,13564,3141,21173,19430,11579,16613,4172,12263,13247,14205,1809,6132,11380,5871,41303,17440,10724,12007,7152,18352,27635,8592,17023,4516,4079,4074,2236,5418,668,513,853,82,95,0,975
+]
+        }, {
+            name: 'การใช้น้ำของข้าว',
+            data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,0,0,0
+]
+        }, {
+            name: 'การใช้น้ำของพืชไร่',
+            data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,0,0,0,0,0,0,0,0,0,0,0,0
+]
+        }]
+    });
+});
+
+// nan-north4
+$(function () {
+    $('#nan-north4').highcharts({
+			chart: {
+					zoomType: 'x'
+				},
+        title: {
+            text: 'ปริมาณน้ำฝนและน้ำท่าผิวดินรายสัปดาห์ของลุ่มน้ำสาขาแม่น้ำน่านส่วนที่ 4',
+            x: -20 //center
+        },
+
+        xAxis: {
+            categories: ['Week 1','Week 2','Week 3','Week 4','Week 5','Week 6','Week 7','Week 8','Week 9','Week 10','Week 11','Week 12','Week 13','Week 14','Week 15',
+						'Week 16','Week 17','Week 18','Week 19','Week 20','Week 21','Week 22','Week 23','Week 24','Week 25','Week 26','Week 27','Week 28','Week 29','Week 30',
+						'Week 31','Week 32','Week 33','Week 34','Week 35','Week 36','Week 37','Week 38','Week 39','Week 40','Week 41','Week 42','Week 43','Week 44','Week 45',
+						'Week 46','Week 47','Week 48','Week 49','Week 50','Week 51','Week 52']
+        },
+        yAxis: {
+            title: {
+                text: 'ปริมาณน้ำฝนและน้ำท่าผิวดิน (m³)'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            valueSuffix: ' m³'
+        },
+        legend: {
+            layout: 'horizontal',
+            align: 'center',
+            verticalAlign: 'bottom',
+            borderWidth: 0
+        },
+				tooltip: {
+            crosshairs: true,
+            shared: true
+        },
+        plotOptions: {
+            spline: {
+                marker: {
+                    radius: 4,
+                    lineColor: '#666666',
+                    lineWidth: 1
+                }
+            }
+        },
+        series: [{
+            name: 'ปริมาณน้ำฝน',
+            data: [3192,2275,2583,1086,6457,4930,612,5845,2302,30259,3348,7267,10201,10136,20223,18789,33127,61747,72404,93020,109067,71724,68579,78590,106514,53479,53024,59011,94873,45873,74279,63193,80493,101512,68029,104977,104040,123828,56787,74831,36366,10259,24060,45089,8128,4461,7488,3525,1345,1843,28,1443
+]
+        }, {
+            name: 'ปริมาณน้ำท่าผิวดิน',
+            data: [602,627,754,426,359,752,339,1968,892,3654,2579,5018,5343,5622,3505,2894,4542,13021,16379,27615,35225,15986,14769,21336,35996,8580,9283,11419,27840,7711,16559,11678,20647,31087,15952,37520,32959,45508,11335,19268,4686,4476,2857,8987,4792,2924,3042,1448,739,52,5,59
+]
+        }, {
+            name: 'การใช้น้ำของข้าว',
+            data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,0,0,0
+]
+        }, {
+            name: 'การใช้น้ำของพืชไร่',
+            data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,0,0,0,0,0,0,0,0,0,0,0,0
+]
+        }]
+    });
+});
+
+//nampad
+$(function () {
+    $('#nampad').highcharts({
+			chart: {
+					zoomType: 'x'
+				},
+        title: {
+            text: 'ปริมาณน้ำฝนและน้ำท่าผิวดินรายสัปดาห์ของลุ่มน้ำสาขาน้ำปาด',
+            x: -20 //center
+        },
+
+        xAxis: {
+            categories: ['Week 1','Week 2','Week 3','Week 4','Week 5','Week 6','Week 7','Week 8','Week 9','Week 10','Week 11','Week 12','Week 13','Week 14','Week 15',
+						'Week 16','Week 17','Week 18','Week 19','Week 20','Week 21','Week 22','Week 23','Week 24','Week 25','Week 26','Week 27','Week 28','Week 29','Week 30',
+						'Week 31','Week 32','Week 33','Week 34','Week 35','Week 36','Week 37','Week 38','Week 39','Week 40','Week 41','Week 42','Week 43','Week 44','Week 45',
+						'Week 46','Week 47','Week 48','Week 49','Week 50','Week 51','Week 52']
+        },
+        yAxis: {
+            title: {
+                text: 'ปริมาณน้ำฝนและน้ำท่าผิวดิน (m³)'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            valueSuffix: ' m³'
+        },
+        legend: {
+            layout: 'horizontal',
+            align: 'center',
+            verticalAlign: 'bottom',
+            borderWidth: 0
+        },
+				tooltip: {
+            crosshairs: true,
+            shared: true
+        },
+        plotOptions: {
+            spline: {
+                marker: {
+                    radius: 4,
+                    lineColor: '#666666',
+                    lineWidth: 1
+                }
+            }
+        },
+        series: [{
+            name: 'ปริมาณน้ำฝน',
+            data: [65,978,3890,1008,13761,2806,10653,3615,2435,15168,17255,18856,20712,11857,17255,17543,31489,55926,44426,71797,96093,61855,73830,33470,52259,32601,45697,32242,61942,36036,63155,45930,77309,84863,58664,103143,98948,97651,40313,82047,34266,8688,14548,24678,23836,2185,4195,3639,1620,108,16,1476
+]
+        }, {
+            name: 'ปริมาณน้ำท่าผิวดิน',
+            data: [0,15,794,213,1211,290,1995,2935,1566,5090,4845,4470,4137,5963,4531,5183,3129,6305,4936,8163,15228,5481,7416,3257,6658,4515,2119,1955,6655,2601,5246,6276,10881,13015,5705,17001,17932,18950,1831,11881,3026,6800,5073,2808,3788,1618,2701,1070,887,5,1,268
+]
+        }, {
+            name: 'การใช้น้ำของข้าว',
+            data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,0,0,0
+]
+        }, {
+            name: 'การใช้น้ำของพืชไร่',
+            data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,0,0,0,0,0,0,0,0,0,0,0,0
+]
+        }]
+    });
+});
+
+// klongtron
+$(function () {
+    $('#klongtron').highcharts({
+			chart: {
+					zoomType: 'x'
+				},
+        title: {
+            text: 'ปริมาณน้ำฝนและน้ำท่าผิวดินรายสัปดาห์ของลุ่มน้ำสาขาคลองตรอน',
+            x: -20 //center
+        },
+
+        xAxis: {
+            categories: ['Week 1','Week 2','Week 3','Week 4','Week 5','Week 6','Week 7','Week 8','Week 9','Week 10','Week 11','Week 12','Week 13','Week 14','Week 15',
+						'Week 16','Week 17','Week 18','Week 19','Week 20','Week 21','Week 22','Week 23','Week 24','Week 25','Week 26','Week 27','Week 28','Week 29','Week 30',
+						'Week 31','Week 32','Week 33','Week 34','Week 35','Week 36','Week 37','Week 38','Week 39','Week 40','Week 41','Week 42','Week 43','Week 44','Week 45',
+						'Week 46','Week 47','Week 48','Week 49','Week 50','Week 51','Week 52']
+        },
+        yAxis: {
+            title: {
+                text: 'ปริมาณน้ำฝนและน้ำท่าผิวดิน (m³)'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            valueSuffix: ' m³'
+        },
+        legend: {
+            layout: 'horizontal',
+            align: 'center',
+            verticalAlign: 'bottom',
+            borderWidth: 0
+        },
+				tooltip: {
+            crosshairs: true,
+            shared: true
+        },
+        plotOptions: {
+            spline: {
+                marker: {
+                    radius: 4,
+                    lineColor: '#666666',
+                    lineWidth: 1
+                }
+            }
+        },
+        series: [{
+            name: 'ปริมาณน้ำฝน',
+            data: [3439,6721,1627,993,12677,1881,1534,2968,793,16571,2319,7258,6683,13522,13825,23207,43306,60824,49514,92442,99959,76407,69125,58540,79431,62804,46608,42165,111119,46085,73567,67456,72170,95078,70973,109522,103775,128727,55202,87689,54489,17671,26752,36895,8574,3491,7900,876,4473,519,150,368
+]
+        }, {
+            name: 'ปริมาณน้ำท่าผิวดิน',
+            data: [114,813,932,251,4590,820,537,426,93,3924,678,2462,3066,4473,4365,2469,3450,5589,3607,16400,20425,10538,7911,5098,11287,6008,3339,2401,25192,3022,9754,7632,8973,17557,8519,24850,21308,34463,4338,14700,4361,3410,2209,3119,5978,2001,2422,392,569,51,65,4
+]
+        }, {
+            name: 'การใช้น้ำของข้าว',
+            data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,0,0,0
+]
+        }, {
+            name: 'การใช้น้ำของพืชไร่',
+            data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,0,0,0,0,0,0,0,0,0,0,0,0
+]
+        }]
+    });
+});
+
+// khaewnoi
+$(function () {
+    $('#khaewnoi').highcharts({
+			chart: {
+					zoomType: 'x'
+				},
+        title: {
+            text: 'ปริมาณน้ำฝนและน้ำท่าผิวดินรายสัปดาห์ของลุ่มน้ำสาขาแม่น้ำแคว',
+            x: -20 //center
+        },
+
+        xAxis: {
+            categories: ['Week 1','Week 2','Week 3','Week 4','Week 5','Week 6','Week 7','Week 8','Week 9','Week 10','Week 11','Week 12','Week 13','Week 14','Week 15',
+						'Week 16','Week 17','Week 18','Week 19','Week 20','Week 21','Week 22','Week 23','Week 24','Week 25','Week 26','Week 27','Week 28','Week 29','Week 30',
+						'Week 31','Week 32','Week 33','Week 34','Week 35','Week 36','Week 37','Week 38','Week 39','Week 40','Week 41','Week 42','Week 43','Week 44','Week 45',
+						'Week 46','Week 47','Week 48','Week 49','Week 50','Week 51','Week 52']
+        },
+        yAxis: {
+            title: {
+                text: 'ปริมาณน้ำฝนและน้ำท่าผิวดิน (m³)'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            valueSuffix: ' m³'
+        },
+        legend: {
+            layout: 'horizontal',
+            align: 'center',
+            verticalAlign: 'bottom',
+            borderWidth: 0
+        },
+				tooltip: {
+            crosshairs: true,
+            shared: true
+        },
+        plotOptions: {
+            spline: {
+                marker: {
+                    radius: 4,
+                    lineColor: '#666666',
+                    lineWidth: 1
+                }
+            }
+        },
+        series: [{
+            name: 'ปริมาณน้ำฝน',
+            data: [829,1459,3686,185,10640,8707,3539,3324,2185,6218,6099,21951,20643,16561,25443,30259,54923,66846,56981,79578,59298,66561,67202,68136,103892,66895,41913,41733,89910,55871,76104,67743,77842,104236,79112,109091,125477,143264,63650,80125,58199,22204,21562,30698,11345,5297,3056,1313,5297,883,1395,515
+]
+        }, {
+            name: 'ปริมาณน้ำท่าผิวดิน',
+            data: [42,406,1393,105,4846,3654,1425,2532,1063,3667,3415,3395,3286,3979,2999,2453,6039,10099,7347,14874,8236,10238,9307,11554,26885,10489,5237,4414,19793,7374,13835,10156,13615,26069,15706,31265,37965,52938,9549,15446,7416,3131,2907,4790,4896,2662,2672,422,697,84,92,83
+]
+        }, {
+            name: 'การใช้น้ำของข้าว',
+            data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,0,0,0
+]
+        }, {
+            name: 'การใช้น้ำของพืชไร่',
+            data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,0,0,0,0,0,0,0,0,0,0,0,0
+]
+        }]
+    });
+});
+
+// nampak
+$(function () {
+    $('#nampak').highcharts({
+			chart: {
+					zoomType: 'x'
+				},
+        title: {
+            text: 'ปริมาณน้ำฝนและน้ำท่าผิวดินรายสัปดาห์ของลุ่มน้ำสาขาน้ำภาค',
+            x: -20 //center
+        },
+
+        xAxis: {
+            categories: ['Week 1','Week 2','Week 3','Week 4','Week 5','Week 6','Week 7','Week 8','Week 9','Week 10','Week 11','Week 12','Week 13','Week 14','Week 15',
+						'Week 16','Week 17','Week 18','Week 19','Week 20','Week 21','Week 22','Week 23','Week 24','Week 25','Week 26','Week 27','Week 28','Week 29','Week 30',
+						'Week 31','Week 32','Week 33','Week 34','Week 35','Week 36','Week 37','Week 38','Week 39','Week 40','Week 41','Week 42','Week 43','Week 44','Week 45',
+						'Week 46','Week 47','Week 48','Week 49','Week 50','Week 51','Week 52']
+        },
+        yAxis: {
+            title: {
+                text: 'ปริมาณน้ำฝนและน้ำท่าผิวดิน (m³)'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            valueSuffix: ' m³'
+        },
+        legend: {
+            layout: 'horizontal',
+            align: 'center',
+            verticalAlign: 'bottom',
+            borderWidth: 0
+        },
+				tooltip: {
+            crosshairs: true,
+            shared: true
+        },
+        plotOptions: {
+            spline: {
+                marker: {
+                    radius: 4,
+                    lineColor: '#666666',
+                    lineWidth: 1
+                }
+            }
+        },
+        series: [{
+            name: 'ปริมาณน้ำฝน',
+            data: [1,91,1758,568,13453,2194,2980,1237,989,16602,7463,20879,9739,14207,18244,37897,39717,75675,58145,95829,63469,95088,71850,64170,92947,78287,59341,37382,126277,70003,102227,99855,103721,128575,98252,126676,137298,124724,52878,109296,68203,19892,22958,19019,9406,7225,1277,337,4094,701,1077,868
+]
+        }, {
+            name: 'ปริมาณน้ำท่าผิวดิน',
+            data: [0,6,98,90,4224,2866,1499,950,404,3421,2643,2810,5677,4159,3222,1125,1137,7428,3025,14506,4173,14027,6115,4880,13995,8866,3117,1359,30256,6001,17835,16409,17721,29730,15247,28740,34905,27950,2204,20162,5219,2801,1942,2887,5634,5412,941,94,1779,98,332,420
+]
+        }, {
+            name: 'การใช้น้ำของข้าว',
+            data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,0,0,0
+]
+        }, {
+            name: 'การใช้น้ำของพืชไร่',
+            data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,0,0,0,0,0,0,0,0,0,0,0,0
+]
+        }]
+    });
+});
+
+// wangthong
+$(function () {
+    $('#wangthong').highcharts({
+			chart: {
+					zoomType: 'x'
+				},
+        title: {
+            text: 'ปริมาณน้ำฝนและน้ำท่าผิวดินรายสัปดาห์ของลุ่มน้ำสาขาแม่น้ำวังทอง',
+            x: -20 //center
+        },
+
+        xAxis: {
+            categories: ['Week 1','Week 2','Week 3','Week 4','Week 5','Week 6','Week 7','Week 8','Week 9','Week 10','Week 11','Week 12','Week 13','Week 14','Week 15',
+						'Week 16','Week 17','Week 18','Week 19','Week 20','Week 21','Week 22','Week 23','Week 24','Week 25','Week 26','Week 27','Week 28','Week 29','Week 30',
+						'Week 31','Week 32','Week 33','Week 34','Week 35','Week 36','Week 37','Week 38','Week 39','Week 40','Week 41','Week 42','Week 43','Week 44','Week 45',
+						'Week 46','Week 47','Week 48','Week 49','Week 50','Week 51','Week 52']
+        },
+        yAxis: {
+            title: {
+                text: 'ปริมาณน้ำฝนและน้ำท่าผิวดิน (m³)'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            valueSuffix: ' m³'
+        },
+        legend: {
+            layout: 'horizontal',
+            align: 'center',
+            verticalAlign: 'bottom',
+            borderWidth: 0
+        },
+				tooltip: {
+            crosshairs: true,
+            shared: true
+        },
+        plotOptions: {
+            spline: {
+                marker: {
+                    radius: 4,
+                    lineColor: '#666666',
+                    lineWidth: 1
+                }
+            }
+        },
+        series: [{
+            name: 'ปริมาณน้ำฝน',
+            data: [481,18,6972,533,8916,12051,5096,2859,3773,9917,8783,12087,24726,16907,24269,53125,57251,81335,64854,101204,77260,63739,75040,74627,76209,46453,59306,66544,65325,50055,56141,57424,75484,66523,59108,100115,129460,143843,61869,69781,48062,27063,18945,18759,7384,3658,2676,527,4126,1663,283,145
+]
+        }, {
+            name: 'ปริมาณน้ำท่าผิวดิน',
+            data: [107,8,1343,160,2547,5530,4050,2113,1738,3513,4909,6485,5391,7537,5677,4677,7864,12929,9572,20372,8323,10881,8034,12034,13708,6811,5769,5878,8283,7197,10245,9504,8748,12134,6918,21558,28646,38393,8085,9099,7213,5461,6554,7034,5375,1624,1155,254,2486,569,125,94
+]
+        }, {
+            name: 'การใช้น้ำของข้าว',
+            data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,0,0,0
+]
+        }, {
+            name: 'การใช้น้ำของพืชไร่',
+            data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,0,0,0,0,0,0,0,0,0,0,0,0
+]
+        }]
+    });
+});
+
+// nan-low
+$(function () {
+    $('#nan-low').highcharts({
+			chart: {
+					zoomType: 'x'
+				},
+        title: {
+            text: 'ปริมาณน้ำฝนและน้ำท่าผิวดินรายสัปดาห์ของลุ่มน้ำสาขาแม่น้ำน่านตอนล่าง',
+            x: -20 //center
+        },
+
+        xAxis: {
+            categories: ['Week 1','Week 2','Week 3','Week 4','Week 5','Week 6','Week 7','Week 8','Week 9','Week 10','Week 11','Week 12','Week 13','Week 14','Week 15',
+						'Week 16','Week 17','Week 18','Week 19','Week 20','Week 21','Week 22','Week 23','Week 24','Week 25','Week 26','Week 27','Week 28','Week 29','Week 30',
+						'Week 31','Week 32','Week 33','Week 34','Week 35','Week 36','Week 37','Week 38','Week 39','Week 40','Week 41','Week 42','Week 43','Week 44','Week 45',
+						'Week 46','Week 47','Week 48','Week 49','Week 50','Week 51','Week 52']
+        },
+        yAxis: {
+            title: {
+                text: 'ปริมาณน้ำฝนและน้ำท่าผิวดิน (m³)'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            valueSuffix: ' m³'
+        },
+        legend: {
+            layout: 'horizontal',
+            align: 'center',
+            verticalAlign: 'bottom',
+            borderWidth: 0
+        },
+				tooltip: {
+            crosshairs: true,
+            shared: true
+        },
+        plotOptions: {
+            spline: {
+                marker: {
+                    radius: 4,
+                    lineColor: '#666666',
+                    lineWidth: 1
+                }
+            }
+        },
+        series: [{
+            name: 'ปริมาณน้ำฝน',
+            data: [993,338,5691,1416,2810,10855,4169,3812,7066,9310,6748,12028,13900,12305,14968,26605,33131,64107,49161,80849,48401,55762,58449,84077,87813,55427,52880,45093,51435,64737,71761,59701,61426,66018,87383,107552,107492,144586,75315,69370,47485,27243,32555,46173,13584,3379,5129,1006,3893,1727,177,395
+]
+        }, {
+            name: 'ปริมาณน้ำท่าผิวดิน',
+            data: [57,68,1794,514,411,3820,3922,4216,3358,3072,3307,3145,3142,2712,2119,3356,5100,19684,12152,28454,10443,16644,14173,30378,33072,14602,11999,10276,13054,19603,25194,17448,18748,20629,32833,46726,46828,74476,28295,22732,11369,3930,8099,13710,3007,1170,3887,932,2169,773,95,11
+]
+        }, {
+            name: 'การใช้น้ำของข้าว',
+            data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,12160,0,0,0
+]
+        }, {
+            name: 'การใช้น้ำของพืชไร่',
+            data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,6352,0,0,0,0,0,0,0,0,0,0,0,0
+]
+        }]
+    });
+});
+</script>
+    <!-- jQuery -->
+    <script src="startbootstrap/bower_components/jquery/dist/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="startbootstrap/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="startbootstrap/bower_components/metisMenu/dist/metisMenu.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="startbootstrap/bower_components/raphael/raphael-min.js"></script>
+    <script src="startbootstrap/bower_components/morrisjs/morris.min.js"></script>
+    <script src="startbootstrap/js/morris-data.js"></script>
+
+		<!-- Highcharts -->
+		<script src="https://code.highcharts.com/highcharts.js"></script>
+		<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="startbootstrap/dist/js/sb-admin-2.js"></script>
+
+
+</body>
+</html>
